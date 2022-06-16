@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: May 28, 2022 at 09:54 AM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +11,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Book_`
 --
+-- Database: `BMS_`
 
 -- --------------------------------------------------------
 
@@ -41,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`aid`, `name`, `password`) VALUES
 ('admin', 'Admin User', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
-('techvegan', 'Admin', '534fc3dc50b1573791f6e96d62f18e0280ab4367');
+('admin1', 'Admin', '534fc3dc50b1573791f6e96d62f18e0280ab4367');
 
 -- --------------------------------------------------------
 
@@ -51,28 +44,15 @@ INSERT INTO `admin` (`aid`, `name`, `password`) VALUES
 
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE IF NOT EXISTS `books` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `bookId` int(255) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
+  `price` int(255) NOT NULL AUTO_INCREMENT,
+  `category` varchar(255) NOT NULL,
+  `available` int(255) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `issue`
---
-
-DROP TABLE IF EXISTS `issue`;
-CREATE TABLE IF NOT EXISTS `issue` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `sid` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -85,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `request` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
-  `sid` varchar(255) NOT NULL,
+  `stuid` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -99,12 +79,12 @@ CREATE TABLE IF NOT EXISTS `request` (
 DROP TABLE IF EXISTS `students`;
 CREATE TABLE IF NOT EXISTS `students` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
+  `stuid` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `branch` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 COMMIT;
 
